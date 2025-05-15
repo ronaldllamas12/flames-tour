@@ -15,16 +15,16 @@ export const Footer: React.FC = () => {
                 Creando experiencias de viaje inolvidables y recuerdos que duran toda la vida. Tu viaje comienza con nosotros.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="bg-gray-800 p-2 rounded-full hover:bg-accent-500 transition-colors">
+              <a href="/" className="bg-gray-800 p-2 rounded-full hover:bg-accent-500 transition-colors">
                 <Facebook size={20} />
               </a>
-              <a href="#" className="bg-gray-800 p-2 rounded-full hover:bg-accent-500 transition-colors">
+              <a href="/" className="bg-gray-800 p-2 rounded-full hover:bg-accent-500 transition-colors">
                 <Twitter size={20} />
               </a>
-              <a href="#" className="bg-gray-800 p-2 rounded-full hover:bg-accent-500 transition-colors">
+              <a href="/" className="bg-gray-800 p-2 rounded-full hover:bg-accent-500 transition-colors">
                 <Instagram size={20} />
               </a>
-              <a href="#" className="bg-gray-800 p-2 rounded-full hover:bg-accent-500 transition-colors">
+              <a href="/" className="bg-gray-800 p-2 rounded-full hover:bg-accent-500 transition-colors">
                 <Youtube size={20} />
               </a>
             </div>
@@ -36,10 +36,10 @@ export const Footer: React.FC = () => {
               <span className="absolute bottom-0 left-0 w-12 h-0.5 bg-accent-500"></span>
             </h3>
             <ul className="space-y-3">
-              {['Home', 'Nosotros', 'Destinos', 'Paquetes Turisticos', 'Blog', 'Contactanos'].map((item) => (
+              {['Home', 'Nosotros', 'Destinos', 'Paquetes Turisticos', 'Contactanos'].map((item) => (
                 <li key={item}>
                   <a 
-                    href="#" 
+                    href="/" 
                     className="text-gray-400 hover:text-white transition-colors flex items-center"
                   >
                     <ArrowRight size={14} className="mr-2 text-accent-500" />
@@ -59,7 +59,7 @@ export const Footer: React.FC = () => {
               {['Bali, Indonesia', 'Paris, France', 'Santorini, Greece', 'Tokyo, Japan', 'New York, USA', 'Cape Town, South Africa'].map((item) => (
                 <li key={item}>
                   <a 
-                    href="#" 
+                    href="/" 
                     className="text-gray-400 hover:text-white transition-colors flex items-center"
                   >
                     <ArrowRight size={14} className="mr-2 text-accent-500" />
@@ -81,7 +81,7 @@ export const Footer: React.FC = () => {
             <form className="mb-4" action="https://formsubmit.co/ronaldllamas17@gmail.com" method="POST">
               <input type="hidden" name="_captcha" value="false"/>
               <input type="hidden" name="_template" value="table"/>
-              <input type="hidden" name="_next" value="http://localhost:5173/#Home"/>
+              <input type="hidden" name="_next" value="http://localhost:3000/#Home"/>
               <div className="flex">
                 <input 
                   type="email" 

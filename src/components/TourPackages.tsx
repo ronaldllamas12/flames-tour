@@ -13,8 +13,7 @@ type TourPackage = {
   locations: string[];
 };
 
-export const TourPackages: React.FC = () => {
-  const packages: TourPackage[] = [
+export const tourPackages = [
     {
       id: 1,
       title: 'Catedral de Sal',
@@ -50,6 +49,9 @@ export const TourPackages: React.FC = () => {
       locations: ['Guatape', 'Antioquia', 'Medellin'],
     },
   ];
+
+export const TourPackages: React.FC = () => {
+  const packages = tourPackages;
 
   return (
     <section className="py-16 bg-white" id="tours">

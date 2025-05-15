@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Search, MapPin, Calendar, Users } from 'lucide-react';
+import { tourPackages } from './TourPackages';
 
 export const Hero: React.FC = () => {
   const [destination, setDestination] = useState('');
@@ -11,8 +12,17 @@ export const Hero: React.FC = () => {
     console.log({ destination, dates, travelers });
   };
 
+  const destinations = tourPackages.reduce((acc: string[], tour) => {
+    tour.locations.forEach(location => {
+      if (!acc.includes(location)) {
+        acc.push(location);
+      }
+    });
+    return acc;
+  }, []);
+
   return (
-    <section className="relative h-screen flex items-center">
+    <section id="home" className="relative h-screen flex items-center">
       {/* Hero Image */}
       <div className="absolute inset-0 z-0">
         <img 
@@ -33,61 +43,6 @@ export const Hero: React.FC = () => {
           </p>
           /*
           {/* Search Form */}
-          <div className="bg-white rounded-lg shadow-xl p-4 md:p-6 transition-transform hover:translate-y-[-4px] duration-300">
-            <form onSubmit={handleSearch} className="grid grid-cols-1 md:grid-cols-4 gap-4">
-              <div className="relative">
-                <label className="block text-sm font-medium text-gray-700 mb-1">Donde</label>
-                <div className="relative">
-                  <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
-                  <input
-                    type="text"
-                    value={destination}
-                    onChange={(e) => setDestination(e.target.value)}
-                    placeholder="Destino"
-                    className="pl-10 w-full border border-gray-300 rounded-md py-2 focus:ring-2 focus:ring-primary-400 focus:border-primary-400 outline-none transition-all"
-                  />
-                </div>
-              </div>
-              
-              <div className="relative">
-                <label className="block text-sm font-medium text-gray-700 mb-1">Cuando</label>
-                <div className="relative">
-                  <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
-                  <input
-                    type="text"
-                    value={dates}
-                    onChange={(e) => setDates(e.target.value)}
-                    placeholder="Check in - Check out"
-                    className="pl-10 w-full border border-gray-300 rounded-md py-2 focus:ring-2 focus:ring-primary-400 focus:border-primary-400 outline-none transition-all"
-                  />
-                </div>
-              </div>
-              
-              <div className="relative">
-                <label className="block text-sm font-medium text-gray-700 mb-1">Quienes</label>
-                <div className="relative">
-                  <Users className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
-                  <input
-                    type="text"
-                    value={travelers}
-                    onChange={(e) => setTravelers(e.target.value)}
-                    placeholder="2 Adults"
-                    className="pl-10 w-full border border-gray-300 rounded-md py-2 focus:ring-2 focus:ring-primary-400 focus:border-primary-400 outline-none transition-all"
-                  />
-                </div>
-              </div>
-              
-              <div className="relative flex items-end">
-                <button
-                  type="submit"
-                  className="w-full bg-accent-500 hover:bg-accent-600 text-white font-medium py-2 px-4 rounded-md flex items-center justify-center space-x-2 transition-colors"
-                >
-                  <Search size={18} />
-                  <span>Buscar</span>
-                </button>
-              </div>
-            </form>
-          </div> 
         </div>
       </div>
     </section>

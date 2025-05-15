@@ -43,11 +43,11 @@ export const Navbar: React.FC = () => {
           </div>
 
           <div className="hidden md:flex space-x-8">
-            {['Home', 'Servicios', 'Tours', 'Nosotros', 'Contacto'].map(
+{['Home',  'Tours', 'Nosotros', 'Contacto'].map(
               (item) => (
                 <a
                   key={item}
-                  href={`#${item.toLowerCase()}`}
+                  href={`/#${item.toLowerCase()}`}
                   className={`font-medium hover:text-accent-500 transition-colors ${
                     isScrolled ? 'text-gray-700' : 'text-white'
                   }`}
@@ -59,8 +59,8 @@ export const Navbar: React.FC = () => {
           </div>
 
           <div className="hidden md:block">
-            <button className="bg-accent-500 hover:bg-accent-600 text-white font-medium py-4 px-4 rounded-full transition-colors">
-              Reserva Ahora!!
+<button className="bg-accent-500 hover:bg-accent-600 text-white font-medium py-2 px-4 rounded-full transition-colors">
+              <a href="/reserva">Reserva Ahora!!</a>
             </button>
           </div>
 
@@ -78,20 +78,20 @@ export const Navbar: React.FC = () => {
         {isMenuOpen && (
           <div className="md:hidden bg-white rounded-lg mt-2 py-4 px-2 shadow-lg absolute left-4 right-4 transition-all duration-300 ease-in-out">
             <div className="flex flex-col space-y-3">
-              {['Home', 'Servicios', 'Tours', 'Nosotros', 'Contactp'].map(
+{['Home', 'Tours', 'Nosotros', 'Contacto'].map(
                 (item) => (
                   <a
                     key={item}
-                    href={`#${item.toLowerCase()}`}
+                    href={`/#${item.toLowerCase()}`}
                     className="text-gray-700 hover:text-accent-500 py-2 px-4 rounded-md transition-colors"
-                    onClick={() => setIsMenuOpen(false)}
+                    onClick={() => setIsMenuOpen(true)}
                   >
                     {item}
                   </a>
                 )
               )}
-              <button className="bg-accent-500 hover:bg-accent-600 text-white font-medium py-2 px-4 rounded-full mt-2 transition-colors">
-                Reserva Ahora!!
+<button className="bg-accent-500 hover:bg-accent-600 text-white font-medium py-2 px-4 rounded-full mt-2 transition-colors">
+                <a href="/reserva">Reserva Ahora!!</a>
               </button>
             </div>
           </div>

@@ -16,11 +16,11 @@ function App() {
   return (
     <BrowserRouter>
       <div className="min-h-screen bg-dark">
-        <Navbar />
         <main>
           <Routes>
             <Route path="/" element={
               <>
+                <Navbar />
                 <Hero />
                 <FeaturedDestinations />
                 <TourPackages />
@@ -29,12 +29,14 @@ function App() {
                 <BookingProcess />
                 <About />
                 <Contact />
+                <Footer />
               </>
             }/>
             <Route path="/reserva" element={<Reserva />} />
           </Routes>
         </main>
-        <Footer />
+        
+      
       </div>
     </BrowserRouter>
   );
