@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { FeaturedDestinations } from './components/FeaturedDestinations';
@@ -9,23 +10,33 @@ import { About } from './components/About';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { BookingProcess } from './components/BookingProcess';
+import Reserva from './pages/Reserva';
 
 function App() {
   return (
-    <div className="min-h-screen bg-white">
-      <Navbar />
-      <main>
-        { <Hero /> }
-        {<FeaturedDestinations /> }
-        { <TourPackages /> }
-        { <SpecialOffers /> }
-        {<Testimonials /> }
-        { <BookingProcess />}
-        { <About /> }
-        { <Contact /> }
-      </main>
-      { <Footer /> }
-    </div>
+    <BrowserRouter>
+      <div className="min-h-screen bg-dark">
+        <Navbar />
+        <main>
+          <Routes>
+            <Route path="/" element={
+              <>
+                <Hero />
+                <FeaturedDestinations />
+                <TourPackages />
+                <SpecialOffers />
+                <Testimonials />
+                <BookingProcess />
+                <About />
+                <Contact />
+              </>
+            }/>
+            <Route path="/reserva" element={<Reserva />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </BrowserRouter>
   );
 }
 

@@ -56,7 +56,7 @@ export const BookingProcess: React.FC = () => {
         </div>
         
         <div className="text-center mt-12">
-          <button className="bg-primary-600 hover:bg-primary-700 text-white font-medium py-3 px-8 rounded-full transition-colors">
+          <button className="bg-primary-600 hover:bg-primary-700 text-white font-medium py-3 px-8 rounded-full transition-colors" onClick={() => window.location.href = '/reserva'}>
             Comienza a planificar tu viaje
           </button>
         </div>

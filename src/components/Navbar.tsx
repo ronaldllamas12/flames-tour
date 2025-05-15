@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Compass, Menu, X } from 'lucide-react';
+import { Compass, Flame, Menu, X } from 'lucide-react';
 
 export const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -28,10 +28,11 @@ export const Navbar: React.FC = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex justify-between items-center">
           <div className="flex items-center">
-            <Compass
+            <Flame
               className={`mr-2 ${isScrolled ? 'text-primary-600' : 'text-white'}`}
               size={28}
             />
+            
             <span
               className={`text-xl font-bold ${
                 isScrolled ? 'text-primary-600' : 'text-white'
@@ -58,7 +59,7 @@ export const Navbar: React.FC = () => {
           </div>
 
           <div className="hidden md:block">
-            <button className="bg-accent-500 hover:bg-accent-600 text-white font-medium py-2 px-4 rounded-full transition-colors">
+            <button className="bg-accent-500 hover:bg-accent-600 text-white font-medium py-4 px-4 rounded-full transition-colors">
               Reserva Ahora!!
             </button>
           </div>
