@@ -11,7 +11,6 @@ const ReservaForm = () => {
   const [email, setEmail] = useState("");
   const [destino, setDestino] = useState("");
   const [fechaInicio, setFechaInicio] = useState<Date | null>(null);
-  const [fechaFin, setFechaFin] = useState<Date | null>(null);
   const numeroWhatsApp = "+573022265668";
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -23,15 +22,16 @@ const ReservaForm = () => {
     }
 
     const mensaje = `
-      Nueva Reserva:
-      Nombre Completo: ${nombreCompleto}
-      Dirección: ${direccion}
-      Teléfono: ${telefono}
-      Número de Personas: ${numPersonas}
-      Email: ${email}
-      Destino: ${destino}
-      Fecha de Inicio: ${fechaInicio ? fechaInicio.toLocaleDateString() : 'No especificada'}
-      Fecha de Fin: ${fechaFin ? fechaFin.toLocaleDateString() : 'No especificada'}
+      DATOS DE RESREVA:
+
+      Nombre Completo:  ${nombreCompleto}
+      Dirección:  ${direccion}
+      Teléfono:  ${telefono}
+      Número de Personas:  ${numPersonas}
+      Email:  ${email}
+      Destino:  ${destino}
+      Fecha de Inicio:  ${fechaInicio ? fechaInicio.toLocaleDateString() : 'No especificada'}
+    
     `;
     const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
     window.open(url, "_blank");
@@ -40,23 +40,17 @@ const ReservaForm = () => {
   return (
     <div className="relative w-screen h-screen flex items-center justify-center overflow-hidden">
       {/* Logo animado de fondo */}
-       <div className="absolute inset-0 z-0">
-      <img
-        src="/imagenes/logo.png" // Asegúrate de que este path sea correcto
-        alt="Logo de fondo"
-        className="w-full h-full object-cover opacity-10 animate-zoom"
-      />
-    </div>
+      
 
       {/* Formulario */}
       <form
       onSubmit={handleSubmit}
-      className="relative z-10 w-full max-w-lg p-6 bg-white bg-opacity-15 backdrop-blur-md rounded-2xl shadow-xl space-y-4 mx-4"
+      className="relative z-10 w-full max-w-xl p-2 bg-gray-700 bg-opacity-15 backdrop-blur-xl rounded-2xl shadow-xl space-y-2 mx-0"
     >
       {/* ...campos del formulario como ya los tienes */}
     
         <div>
-          <label htmlFor="nombreCompleto" className="block text-white text-sm font-bold mb-2">
+          <label htmlFor="nombreCompleto" className="block text-black text-md font-bold mb-2">
             Nombre Completo:
           </label>
           <input
@@ -65,12 +59,12 @@ const ReservaForm = () => {
             value={nombreCompleto}
             onChange={(e) => setNombreCompleto(e.target.value)}
             required
-            className="shadow border rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
           />
         </div>
 
         <div>
-          <label htmlFor="direccion" className="block text-white text-sm font-bold mb-2">
+          <label htmlFor="direccion" className="block text-black text-md font-bold mb-2">
             Dirección:
           </label>
           <input
@@ -79,12 +73,12 @@ const ReservaForm = () => {
             value={direccion}
             onChange={(e) => setDireccion(e.target.value)}
             required
-            className="shadow border rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
           />
         </div>
 
         <div>
-          <label htmlFor="telefono" className="block text-white text-sm font-bold mb-2">
+          <label htmlFor="telefono" className="block text-black text-md font-bold mb-2">
             Teléfono:
           </label>
           <input
@@ -98,7 +92,7 @@ const ReservaForm = () => {
         </div>
 
         <div>
-          <label htmlFor="numPersonas" className="block text-white text-sm font-bold mb-2">
+          <label htmlFor="numPersonas" className="block text-black text-md font-bold mb-2">
             Número de Personas a Reservar:
           </label>
           <input
@@ -107,18 +101,18 @@ const ReservaForm = () => {
             value={numPersonas}
             onChange={(e) => {
               const value = e.target.value;
-              if (parseInt(value, 10) >= 0) {
+              if (parseInt(value, 10) > 0) {
                 setNumPersonas(value);
               }
             }}
             required
-            className="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
             min="1"
           />
         </div>
 
         <div>
-          <label htmlFor="email" className="block text-white text-sm font-bold mb-2">
+          <label htmlFor="email" className=" text-black text-md font-bold mb-2">
             Correo Electrónico:
           </label>
           <input
@@ -127,12 +121,12 @@ const ReservaForm = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            className="shadow border rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
           />
         </div>
 
         <div>
-          <label htmlFor="destino" className="block text-white text-sm font-bold mb-2">
+          <label htmlFor="destino" className="block text-black text-md font-bold mb-2">
             Destino:
           </label>
           <select
@@ -140,7 +134,7 @@ const ReservaForm = () => {
             value={destino}
             onChange={(e) => setDestino(e.target.value)}
             required
-            className="shadow border rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
           >
             <option value="">Seleccione un destino</option>
             {tourPackages.map((pkg) => (
@@ -152,41 +146,28 @@ const ReservaForm = () => {
         </div>
 
         <div>
-          <label className="block text-white text-sm font-bold mb-2">
+          <label className="block text-black text-md font-bold mb-2">
             Fecha de Inicio:
           </label>
           <DatePicker
             selected={fechaInicio}
             onChange={(date: Date) => setFechaInicio(date)}
             dateFormat="dd/MM/yyyy"
-            className="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow border rounded  py-2 px-1 text-black leading-tight focus:outline-none focus:shadow-outline"
             placeholderText="Seleccione la fecha de inicio"
-          />
-        </div>
-
-        <div>
-          <label className="block text-white text-sm font-bold mb-2">
-            Fecha de Fin:
-          </label>
-          <DatePicker
-            selected={fechaFin}
-            onChange={(date: Date) => setFechaFin(date)}
-            dateFormat="dd/MM/yyyy"
-            className="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            placeholderText="Seleccione la fecha de fin"
           />
         </div>
 
         <div className="flex justify-center mt-4">
           <button
             type="submit"
-            className="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mr-4"
+            className="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-8 rounded focus:outline-none focus:shadow-outline mr-6"
           >
             Reservar
           </button>
           <a
             href="/"
-            className="bg-red-400 hover:bg-red-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="bg-red-400 hover:bg-red-800 text-white font-bold py-2 px-8 rounded focus:outline-none focus:shadow-outline"
           >
             Cancelar
           </a>

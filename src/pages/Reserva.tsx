@@ -20,7 +20,7 @@ const Reserva: React.FC = () => {
           <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-2">
             Reserva Ahora!
           </h1>
-          <p className="text-lg md:text-xl text-white/90">
+          <p className="text-lg md:text-lg text-white/90">
             Completa el formulario para reservar tu próxima aventura.
           </p>
         </div>
