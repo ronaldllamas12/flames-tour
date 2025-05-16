@@ -45,12 +45,12 @@ const ReservaForm = () => {
       {/* Formulario */}
       <form
       onSubmit={handleSubmit}
-      className="relative z-10 w-full max-w-xl p-2 bg-gray-700 bg-opacity-15 backdrop-blur-xl rounded-2xl shadow-xl space-y-2 mx-0"
+      className=" z-10 w-full max-w-xl p-8 bg-gray-700 bg-opacity-15 backdrop-blur-xl rounded-2xl shadow-xl space-y-4 mx-4 md:mx-0"
     >
       {/* ...campos del formulario como ya los tienes */}
     
         <div>
-          <label htmlFor="nombreCompleto" className="block text-black text-md font-bold mb-2">
+          <label htmlFor="nombreCompleto" className="block text-black text-sm font-bold mb-1">
             Nombre Completo:
           </label>
           <input
@@ -59,12 +59,12 @@ const ReservaForm = () => {
             value={nombreCompleto}
             onChange={(e) => setNombreCompleto(e.target.value)}
             required
-            className="shadow border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow border rounded w-full py-1 px-2 text-black leading-tight focus:outline-none focus:shadow-outline"
           />
         </div>
 
         <div>
-          <label htmlFor="direccion" className="block text-black text-md font-bold mb-2">
+          <label htmlFor="direccion" className="block text-black text-sm font-bold mb-1">
             Dirección:
           </label>
           <input
@@ -73,12 +73,12 @@ const ReservaForm = () => {
             value={direccion}
             onChange={(e) => setDireccion(e.target.value)}
             required
-            className="shadow border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow border rounded w-full py-1 px-2 text-black leading-tight focus:outline-none focus:shadow-outline"
           />
         </div>
 
         <div>
-          <label htmlFor="telefono" className="block text-black text-md font-bold mb-2">
+          <label htmlFor="telefono" className="block text-black text-sm font-bold mb-1">
             Teléfono:
           </label>
           <input
@@ -87,12 +87,12 @@ const ReservaForm = () => {
             value={telefono}
             onChange={(e) => setTelefono(e.target.value)}
             required
-            className="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow border rounded w-full py-1 px-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
         </div>
 
         <div>
-          <label htmlFor="numPersonas" className="block text-black text-md font-bold mb-2">
+          <label htmlFor="numPersonas" className="block text-black text-sm font-bold mb-1">
             Número de Personas a Reservar:
           </label>
           <input
@@ -106,13 +106,13 @@ const ReservaForm = () => {
               }
             }}
             required
-            className="shadow border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow border rounded w-full py-1 px-2 text-black leading-tight focus:outline-none focus:shadow-outline"
             min="1"
           />
         </div>
 
         <div>
-          <label htmlFor="email" className=" text-black text-md font-bold mb-2">
+          <label htmlFor="email" className=" text-black text-sm font-bold mb-1">
             Correo Electrónico:
           </label>
           <input
@@ -121,12 +121,12 @@ const ReservaForm = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            className="shadow border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow border rounded w-full py-1 px-2 text-black leading-tight focus:outline-none focus:shadow-outline"
           />
         </div>
 
         <div>
-          <label htmlFor="destino" className="block text-black text-md font-bold mb-2">
+          <label htmlFor="destino" className="block text-black text-sm font-bold mb-1">
             Destino:
           </label>
           <select
@@ -134,7 +134,7 @@ const ReservaForm = () => {
             value={destino}
             onChange={(e) => setDestino(e.target.value)}
             required
-            className="shadow border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow border rounded w-full py-1 px-2 text-black leading-tight focus:outline-none focus:shadow-outline"
           >
             <option value="">Seleccione un destino</option>
             {tourPackages.map((pkg) => (
@@ -146,14 +146,14 @@ const ReservaForm = () => {
         </div>
 
         <div>
-          <label className="block text-black text-md font-bold mb-2">
+          <label className="block text-black text-sm font-bold mb-1">
             Fecha de Inicio:
           </label>
           <DatePicker
             selected={fechaInicio}
-            onChange={(date: Date) => setFechaInicio(date)}
+            onChange={(date: Date | null) => setFechaInicio(date)}
             dateFormat="dd/MM/yyyy"
-            className="shadow border rounded  py-2 px-1 text-black leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow border rounded  py-1 px-1 text-black leading-tight focus:outline-none focus:shadow-outline"
             placeholderText="Seleccione la fecha de inicio"
           />
         </div>
