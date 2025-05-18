@@ -25,10 +25,11 @@ const Contact: React.FC = () => {
   };
 
   const sendToWhatsApp = () => {
-    const message = `¡Hola! Soy ${formData.name}, mi correo es ${formData.email}. Estoy interesado en: ${formData.destination}. Mensaje: ${formData.message}`;
+    const message = `¡Hola! Soy ${formData.name},\nmi correo es ${formData.email}.\nEstoy interesado en: ${formData.destination}.\nMensaje: ${formData.message}`;
     const phone = "+573022265668";
     const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
     window.open(url, "_blank");
+    alert("Reserva enviada correctamente por favor presione aceptar ");
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -45,6 +46,7 @@ const Contact: React.FC = () => {
           _captcha: "false",
           _template: "table",
           _autoresponse: "Pronto lo contactaremos!!",
+          _subject: "Consulta desde Flames Tour",
         }),
       });
 
