@@ -24,13 +24,13 @@ const ReservaForm = () => {
     const mensaje = `
       DATOS DE RESREVA:
 
-      Nombre Completo:  ${nombreCompleto}
-      Dirección:  ${direccion}
-      Teléfono:  ${telefono}
+      Nombre : ${nombreCompleto}
+      Dirección: ${direccion}
+      Teléfono: ${telefono}
       Número de Personas:  ${numPersonas}
-      Email:  ${email}
-      Destino:  ${destino}
-      Fecha de Inicio:  ${fechaInicio ? fechaInicio.toLocaleDateString() : 'No especificada'}
+      Email: ${email}
+      Destino: ${destino}
+      Fecha de Inicio: ${fechaInicio ? fechaInicio.toLocaleDateString() : 'No especificada'}
     
     `;
     const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
@@ -45,15 +45,14 @@ const ReservaForm = () => {
       {/* Formulario */}
       <form
       onSubmit={handleSubmit}
-      className=" z-10 w-full max-w-xl p-8 bg-gray-700 bg-opacity-15 backdrop-blur-xl rounded-2xl shadow-xl space-y-4 mx-4 md:mx-0"
+      className=" z-10 w-lg max-w-sm p-10 bg-gray-500 bg-opacity-60 backdrop-blur-xl rounded-xl shadow-xl space-y-3 mx-8 md:mx-2  "
     >
       {/* ...campos del formulario como ya los tienes */}
-    
-        <div>
-          <label htmlFor="nombreCompleto" className="block text-black text-sm font-bold mb-1">
-            Nombre Completo:
-          </label>
+        <div className="LOGO flex justify-center "><img src="/imagenes/logo.png" alt="logo" className="w-24 h-auto"  /></div>
+        <div className="flex justify-center">
+          
           <input
+            placeholder="Nombre Completo"
             type="text"
             id="nombreCompleto"
             value={nombreCompleto}
@@ -63,25 +62,23 @@ const ReservaForm = () => {
           />
         </div>
 
-        <div>
-          <label htmlFor="direccion" className="block text-black text-sm font-bold mb-1">
-            Dirección:
-          </label>
+        <div className="flex justify-center">
+         
           <input
+            placeholder="Dirección"
             type="text"
             id="direccion"
             value={direccion}
             onChange={(e) => setDireccion(e.target.value)}
             required
-            className="shadow border rounded w-full py-1 px-2 text-black leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow border rounded w-full py-1 px-2 text-black leading-tight focus:outline-none focus:shadow-outline "
           />
         </div>
 
-        <div>
-          <label htmlFor="telefono" className="block text-black text-sm font-bold mb-1">
-            Teléfono:
-          </label>
+        <div className="flex justify-center">
+         
           <input
+            placeholder="Teléfono"
             type="tel"
             id="telefono"
             value={telefono}
@@ -91,11 +88,10 @@ const ReservaForm = () => {
           />
         </div>
 
-        <div>
-          <label htmlFor="numPersonas" className="block text-black text-sm font-bold mb-1">
-            Número de Personas a Reservar:
-          </label>
+        <div className="flex justify-center">
+          
           <input
+            placeholder="Número de Personas"
             type="number"
             id="numPersonas"
             value={numPersonas}
@@ -111,11 +107,10 @@ const ReservaForm = () => {
           />
         </div>
 
-        <div>
-          <label htmlFor="email" className=" text-black text-sm font-bold mb-1">
-            Correo Electrónico:
-          </label>
+        <div className="flex justify-center">
+        
           <input
+            placeholder="Email"
             type="email"
             id="email"
             value={email}
@@ -125,10 +120,7 @@ const ReservaForm = () => {
           />
         </div>
 
-        <div>
-          <label htmlFor="destino" className="block text-black text-sm font-bold mb-1">
-            Destino:
-          </label>
+        <div className="flex justify-center">
           <select
             id="destino"
             value={destino}
@@ -146,14 +138,14 @@ const ReservaForm = () => {
         </div>
 
         <div>
-          <label className="block text-black text-sm font-bold mb-1">
+          <label className="block text-black text-sm font-bold mb-1  justify-center">
             Fecha de Inicio:
           </label>
           <DatePicker
             selected={fechaInicio}
             onChange={(date: Date | null) => setFechaInicio(date)}
             dateFormat="dd/MM/yyyy"
-            className="shadow border rounded  py-1 px-1 text-black leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow border rounded  py-1 px-1 text-black leading-tight focus:outline-none focus:shadow-outline "
             placeholderText="Seleccione la fecha de inicio"
           />
         </div>

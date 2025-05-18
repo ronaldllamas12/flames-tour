@@ -7,10 +7,11 @@ import { TourPackages } from './components/TourPackages';
 import { Testimonials } from './components/Testimonials';
 import { SpecialOffers } from './components/SpecialOffers';
 import { About } from './components/About';
-import { Contact } from './components/Contact';
+
 import { Footer } from './components/Footer';
 import { BookingProcess } from './components/BookingProcess';
 import Reserva from './pages/Reserva';
+import Contact from './components/Contact';
 
 function App() {
   return (
