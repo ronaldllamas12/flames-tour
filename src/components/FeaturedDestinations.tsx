@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ExternalLink } from 'lucide-react';
+import { TourModal } from './TourModal';
 
 type Destination = {
   id: number;
@@ -11,6 +12,8 @@ type Destination = {
 };
 
 export const FeaturedDestinations: React.FC = () => {
+  const [selectedDestination, setSelectedDestination] = useState<Destination | null>(null);
+
   const destinations: Destination[] = [
     {
       id: 1,
@@ -63,10 +66,11 @@ export const FeaturedDestinations: React.FC = () => {
               className="bg-white rounded-lg overflow-hidden shadow-md group transition-all duration-300 hover:shadow-xl"
             >
               <div className="relative h-60 overflow-hidden">
-                <img 
-                  src={destination.image} 
-                  alt={destination.name} 
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                <img
+                  src={destination.image}
+                  alt={destination.name}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 cursor-pointer"
+                  onClick={() => setSelectedDestination(destination)}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                   <div className="flex justify-between items-center w-full">
@@ -97,6 +101,19 @@ export const FeaturedDestinations: React.FC = () => {
             </div>
           ))}
         </div>
+
+        <TourModal
+          isOpen={selectedDestination !== null}
+          onClose={() => setSelectedDestination(null)}
+          title={selectedDestination?.name || ''}
+          description={selectedDestination?.location || ''}
+          image={selectedDestination?.image || ''}
+          locations={[]}
+          duration=""
+          groupSize=""
+          rating={selectedDestination?.rating || 0}
+          price={selectedDestination?.price || ''}
+        />
         
         <div className="text-center mt-10">
           <button className="bg-white border-2 border-primary-600 text-primary-600 hover:bg-primary-600 hover:text-white font-medium py-2 px-6 rounded-full transition-colors">

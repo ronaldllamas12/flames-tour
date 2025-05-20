@@ -59,7 +59,7 @@ export const Navbar: React.FC = () => {
           </div>
 
           <div className="hidden md:block">
-<button className="bg-accent-500 hover:bg-accent-600 text-white font-medium py-2 px-4 rounded-full transition-colors">
+<button className="bg-accent-400 hover:bg-accent-600 text-white font-medium py-2 px-4 rounded-full transition-colors">
               <a href="/reserva">Reserva Ahora!!</a>
             </button>
           </div>

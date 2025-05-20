@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Clock, Map, Users, Star } from 'lucide-react';
+import { TourModal } from './TourModal';
 
 type TourPackage = {
   id: number;
@@ -14,44 +15,48 @@ type TourPackage = {
 };
 
 export const tourPackages = [
-    {
-      id: 1,
-      title: 'Catedral de Sal',
-      description: 'Explora la Catedra de Sal en Zipaquira\' un icono del sitio.',
-      image: '/imagenes/catedral de sal.jpg',
-      duration: '3 days',
-      groupSize: '10-15',
-      rating: 4.9,
-      price: '$200000',
-      locations: ['zipaquira', 'Bogota', 'Cundinamarca'],
-    },
-    {
-      id: 2,
-      title: 'Cartagena de Indias',
-      description: 'Immersate en la apasionante Historia en la ciudad Amurallada.',
-      image: '/imagenes/cartagena.jpg',
-      duration: '16 days',
-      groupSize: '8-12',
-      rating: 4.8,
-      price: '$400000',
-      locations: ['Cartagena', 'Baru', 'Islas del Rosario'],
-    },
-    {
-      id: 3,
-      title: 'El Peñol de Guatape',
-      description: 'Admira la impresionante vista desde la cima de la roca.',
-      
-      image: '/imagenes/el peñol.jpg',
-      duration: '18 days',
-      groupSize: '10-15',
-      rating: 4.7,
-      price: '$600000',
-      locations: ['Guatape', 'Antioquia', 'Medellin'],
-    },
-  ];
+  {
+    id: 1,
+    title: 'Catedral de Sal',
+    description: "Explora la Catedra de Sal en Zipaquira' un icono del sitio.",
+    image: '/imagenes/catedral de sal.jpg',
+    duration: '3 days',
+    groupSize: '10-15',
+    rating: 4.9,
+    price: '$200000',
+    locations: ['zipaquira', 'Bogota', 'Cundinamarca'],
+  },
+  {
+    id: 2,
+    title: 'Cartagena de Indias',
+    description: 'Immersate en la apasionante Historia en la ciudad Amurallada.',
+    image: '/imagenes/cartagena.jpg',
+    duration: '16 days',
+    groupSize: '8-12',
+    rating: 4.8,
+    price: '$400000',
+    locations: ['Cartagena', 'Baru', 'Islas del Rosario'],
+  },
+  {
+    id: 3,
+    title: 'El Peñol de Guatape',
+    description: 'Admira la impresionante vista desde la cima de la roca.',
+    image: '/imagenes/el peñol.jpg',
+    duration: '18 days',
+    groupSize: '10-15',
+    rating: 4.7,
+    price: '$600000',
+    locations: ['Guatape', 'Antioquia', 'Medellin'],
+  },
+];
 
 export const TourPackages: React.FC = () => {
+  const [selectedPackage, setSelectedPackage] = useState<TourPackage | null>(null);
   const packages = tourPackages;
+
+  const handleOpenModal = (pkg: TourPackage) => {
+    setSelectedPackage(pkg);
+  };
 
   return (
     <section className="py-16 bg-white" id="tours">
@@ -62,31 +67,31 @@ export const TourPackages: React.FC = () => {
             Descubre nuestros paquetes turísticos cuidadosamente seleccionados para ofrecerte experiencias inolvidables en los destinos más hermosos del mundo.
           </p>
         </div>
-        
+
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {packages.map((pkg) => (
-            <div 
+            <div
               key={pkg.id}
               className="bg-white rounded-lg overflow-hidden shadow-lg border border-gray-100 transition-all duration-300 hover:shadow-xl hover:translate-y-[-4px]"
             >
               <div className="relative h-60 overflow-hidden">
-                <img 
-                  src={pkg.image} 
-                  alt={pkg.title} 
+                <img
+                  src={pkg.image}
+                  alt={pkg.title}
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute top-4 right-4 bg-accent-500 text-white text-sm font-bold px-3 py-1 rounded-full">
                   {pkg.price}
                 </div>
               </div>
-              
+
               <div className="p-6">
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">{pkg.title}</h3>
                 <p className="text-gray-600 mb-4">{pkg.description}</p>
-                
+
                 <div className="flex flex-wrap gap-2 mb-4">
                   {pkg.locations.map((location) => (
-                    <span 
+                    <span
                       key={location}
                       className="bg-gray-100 text-gray-700 text-xs font-medium px-2.5 py-1 rounded"
                     >
@@ -94,7 +99,7 @@ export const TourPackages: React.FC = () => {
                     </span>
                   ))}
                 </div>
-                
+
                 <div className="flex flex-wrap justify-between text-sm text-gray-600 mb-6">
                   <div className="flex items-center mr-4 mb-2">
                     <Clock size={16} className="mr-1 text-primary-600" />
@@ -109,15 +114,31 @@ export const TourPackages: React.FC = () => {
                     <span>{pkg.rating} (120+ reviews)</span>
                   </div>
                 </div>
-                
-                <button className="w-full bg-primary-600 hover:bg-primary-700 text-white font-medium py-2 rounded-md transition-colors">
+
+                <button
+                  className="w-full bg-primary-600 hover:bg-primary-700 text-white font-medium py-2 rounded-md transition-colors"
+                  onClick={() => handleOpenModal(pkg)}
+                >
                   Ver Detalles
                 </button>
               </div>
             </div>
           ))}
         </div>
-        
+
+        <TourModal
+          isOpen={selectedPackage !== null}
+          onClose={() => setSelectedPackage(null)}
+          title={selectedPackage?.title || ''}
+          description={selectedPackage?.description || ''}
+          image={selectedPackage?.image || ''}
+          locations={selectedPackage?.locations || []}
+          duration={selectedPackage?.duration || ''}
+          groupSize={selectedPackage?.groupSize || ''}
+          rating={selectedPackage?.rating || 0}
+          price={selectedPackage?.price || ''}
+        />
+
         <div className="text-center mt-10">
           <button className="bg-white border-2 border-primary-600 text-primary-600 hover:bg-primary-600 hover:text-white font-medium py-2 px-6 rounded-full transition-colors">
             Explora más paquetes
